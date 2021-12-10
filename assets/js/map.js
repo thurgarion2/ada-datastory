@@ -1,11 +1,16 @@
 function main(clusters) {
   const map = initMap();
+  all_clusters = clusters.reduce((acc, x) => acc.add(x.cluster), new Set());
 
-  addMarker(clusters[0], map);
-  addMarker(clusters[1], map);
-  addMarker(clusters[2], map);
-  addMarker(clusters[3], map);
-  addMarker(clusters[4], map);
+  bonk = {
+    1: "red",
+    0: "blue",
+    "-1": "black",
+    2: "green",
+    3: "yellow",
+    4: "purple",
+  };
+  clusters.map((x) => addMarker(x, map, bonk));
 }
 
 /**
@@ -17,14 +22,21 @@ function initMap() {
     zoom: 9,
   });
 
-  const layer = new L.StamenTileLayer("watercolor");
+  const layer = new L.StamenTileLayer("toner");
   map.addLayer(layer);
 
   return map;
 }
 
-function addMarker({ cluster, journal, lat, lon }, map) {
+function addMarker({ cluster, journal, lat, lon }, map, bonk) {
   if (lat && lon) {
-    L.marker([lat, lon]).addTo(map);
+    circle = L.circle([lat, lon], {
+      color: bonk[cluster],
+      fillOpacity: 0.5,
+      radius: 20000,
+    });
+
+    circle.addTo(map);
+    circle.bindPopup(journal);
   }
 }
