@@ -8,6 +8,11 @@
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
+        
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css"/>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"/>
+        <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+
 
         <!-- Stamen Leaflet API -->
         <script type="text/javascript" src="https://stamen-maps.a.ssl.fastly.net/js/tile.stamen.js?v1.3.0"></script>
@@ -17,12 +22,10 @@
         {% include head-custom.html %}
 
         <!-- Document script -->
+        <script src="{{ '/assets/js/lib/js-colormaps.js?v=' | append: site.github.build_revision | relative_url'}}"></script> 
         <script src="{{ '/assets/js/map.js?v=' | append: site.github.build_revision | relative_url' }}"></script>
     </head>
-    <body onload='main({{site.data.cluster_locations | jsonify }})'>
+    <body onload='main({{site.data.cluster_locations | jsonify }}, null)'>
         <div id='map'></div>
-        <p>
-            Map tiles by <a href="http://stamen.com">Stamen Design</a>, under <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>. Data by <a href="http://openstreetmap.org">OpenStreetMap</a>, under <a href="http://www.openstreetmap.org/copyright">ODbL</a>.
-        </p>
     </body>
 </html>

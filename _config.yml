@@ -1,3 +1,5 @@
+title: Cayman theme
+description: Cayman is a clean, responsive theme for GitHub Pages.
+show_downloads: true
+google_analytics:
 theme: jekyll-theme-cayman
-title: Properties of communities in news outlets in Quotebank
-description: The goal of the project is to highlight relationships between newspapers, journalists and interviewees. More precisely, we want to cluster media outlets based on who they cite. We will then analyze the attributes of the resulting communities using external datasets. Some of the factor we want to examine are geolocation, interviewees, owner, size, focus, etc.
